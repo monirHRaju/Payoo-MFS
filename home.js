@@ -27,6 +27,19 @@ function setAvailableBalance(value){
     availableBalance.innerText = value;
 }
 
+function getElement(id){
+    const element = document.getElementById(id)
+    return element;
+}
+
+function getElements(className){
+    const elements = document.getElementsByClassName(className)
+    return elements;
+}
+
+
+
+//private functions
 document.getElementById('add-money').addEventListener('click', function(e){
     e.preventDefault()
 
@@ -95,6 +108,15 @@ document.getElementById('add-money-btn').addEventListener('click', function(){
 
     document.getElementById('add-money-form').style.display = 'block';
     
+    //toggle button activation
+    //deactivate button style with class
+    const buttons = getElements('button')
+    for(const btn of buttons){
+    btn.classList.remove('active-btn');
+     }
+    //activate button style with class
+    const element = getElement('add-money-btn')
+    element.classList.add('active-btn');
 })
 
 document.getElementById('send-money-btn').addEventListener('click', function(){
@@ -104,8 +126,17 @@ document.getElementById('send-money-btn').addEventListener('click', function(){
         form.style.display = 'none';
     }
 
-    document.getElementById('send-money-form').style.display = 'block';
+   getElement('send-money-form').style.display = 'block';
     
+    //toggle button activation
+    //deactivate button style with class
+    const buttons = getElements('button')
+    for(const btn of buttons){
+    btn.classList.remove('active-btn');
+     }
+    //activate button style with class
+    const element = getElement('send-money-btn')
+    element.classList.add('active-btn');
 })
 
 document.getElementById('transfer-money-btn').addEventListener('click', function(){
@@ -116,6 +147,16 @@ document.getElementById('transfer-money-btn').addEventListener('click', function
     }
 
     document.getElementById('transfer-money-form').style.display = 'block';
+
+    //toggle button activation
+    //deactivate button style with class
+    const buttons = getElements('button')
+    for(const btn of buttons){
+    btn.classList.remove('active-btn');
+     }
+    //activate button style with class
+    const element = getElement('transfer-money-btn')
+    element.classList.add('active-btn');
     
 })
 
@@ -128,6 +169,15 @@ document.getElementById('get-bonus-btn').addEventListener('click', function(){
 
     document.getElementById('get-bonus-form').style.display = 'block';
     
+    //toggle button activation
+    //deactivate button style with class
+    const buttons = getElements('button')
+    for(const btn of buttons){
+    btn.classList.remove('active-btn');
+     }
+    //activate button style with class
+    const element = getElement('get-bonus-btn')
+    element.classList.add('active-btn');
 })
 
 document.getElementById('pay-bill-btn').addEventListener('click', function(){
@@ -137,19 +187,37 @@ document.getElementById('pay-bill-btn').addEventListener('click', function(){
         form.style.display = 'none';
     }
 
-    document.getElementById('pay-bill-form').style.display = 'block';
+    getElement('pay-bill-form').style.display = 'block';
+
+    //toggle button activation
+    //deactivate button style with class
+    const buttons = getElements('button')
+    for(const btn of buttons){
+    btn.classList.remove('active-btn');
+     }
+    //activate button style with class
+    const element = getElement('pay-bill-btn')
+    element.classList.add('active-btn');
     
 })
 
 document.getElementById('transaction-btn').addEventListener('click', function(){
-    const forms = document.getElementsByClassName('form')
+    const forms = getElements('form')
 
     for(const form of forms){
         form.style.display = 'none';
     }
 
     document.getElementById('transaction-history').style.display = 'block';
-    
+    //toggle button activation
+    //deactivate button style with class
+    const buttons = getElements('button')
+    for(const btn of buttons){
+    btn.classList.remove('active-btn');
+     }
+    //activate button style with class
+    const element = getElement('transaction-btn')
+    element.classList.add('active-btn');
 })
 
 

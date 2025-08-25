@@ -4,3 +4,8 @@
   font-weight: 400;
   font-style: normal;
 }
+.active-btn {
+  background-color: #0874f20d;
+  border: 2px solid #0874F2;
+  color: #0874F2;
+}
