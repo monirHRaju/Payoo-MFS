@@ -18,7 +18,7 @@
         <div class="flex ml-3">
             <img src="./assets/Group.png" alt="" class="h-[50px]">
             <div class="ml-2">
-                <h2 class="font-bold text-lg">$ <span>45000</span></h2>
+                <h2 class="font-bold text-lg">$ <span id="balance">45000</span></h2>
                 <p class="text-gray-500">Available Balance</p>
             </div>
         </div>
@@ -32,79 +32,193 @@
         <h1 class="text-2xl font-bold">🔥Welcome to Payooo!</h1>
         <p class="text-gray-500 my-2">Enjoy easy and convenient financial services with us. Cashout charge is low and </p>
         <div class="cards grid grid-cols-3 gap-6">
-            <div class="card border-2 border-gray-200 rounded-2xl flex justify-center items-center py-6 px-6 hover:bg-gray-200 transition-colors duration-300 ease-in">
+            <div class="card border-2 border-gray-200 rounded-2xl flex justify-center items-center py-6 px-6 hover:bg-gray-200 transition-colors duration-300 ease-in" id="add-money-btn">
                 <img src="./assets/wallet1.png"   alt="">
                 <p class="text-gray-500">Add Money</p>
             </div>
             
-            <div class="card border-2 border-gray-200 rounded-2xl flex justify-center items-center py-6 px-6 hover:bg-gray-200 transition-colors duration-300 ease-in">
+            <div class="card border-2 border-gray-200 rounded-2xl flex justify-center items-center py-6 px-6 hover:bg-gray-200 transition-colors duration-300 ease-in" id="send-money-btn">
                 <img src="./assets/send1.png"   alt="">
                 <p class="text-gray-500">Cashout</p>
             </div>
             
-            <div class="card border-2 border-gray-200 rounded-2xl flex justify-center items-center p-3 hover:bg-gray-200 transition-colors duration-300 ease-in">
+            <div class="card border-2 border-gray-200 rounded-2xl flex justify-center items-center p-3 hover:bg-gray-200 transition-colors duration-300 ease-in" id="transfer-money-btn">
                 <img src="./assets/transaction1.png"   alt="">
                 <p class="text-gray-500">Transfer Money</p>
             </div>
             
-            <div class="card border-2 border-gray-200 rounded-2xl flex justify-center items-center py-6 px-6 hover:bg-gray-200 transition-colors duration-300 ease-in">
+            <div class="card border-2 border-gray-200 rounded-2xl flex justify-center items-center py-6 px-6 hover:bg-gray-200 transition-colors duration-300 ease-in" id="get-bonus-btn">
                 <img src="./assets/bonus1.png"   alt="">
                 <p class="text-gray-500">Get Bonus</p>
             </div>
             
-            <div class="card border-2 border-gray-200 rounded-2xl flex justify-center items-center py-6 px-6 hover:bg-gray-200 transition-colors duration-300 ease-in">
+            <div class="card border-2 border-gray-200 rounded-2xl flex justify-center items-center py-6 px-6 hover:bg-gray-200 transition-colors duration-300 ease-in" id="pay-bill-btn">
                 <img src="./assets/wallet1.png"   alt="">
                 <p class="text-gray-500">Pay Bill</p>
             </div>
             
-            <div class="card border-2 border-gray-200 rounded-2xl flex justify-center items-center py-6 px-6 hover:bg-gray-200 transition-colors duration-300 ease-in">
+            <div class="card border-2 border-gray-200 rounded-2xl flex justify-center items-center py-6 px-6 hover:bg-gray-200 transition-colors duration-300 ease-in" id="transaction-btn">
                 <img src="./assets/money1.png"   alt="">
                 <p class="text-gray-500">Transactions</p>
             </div>
-            
-            
-            
 
         </div>
     </div>
 
     <!-- form section -->
-    <div class="max-w-lg mx-auto p-5">
+
+     <!-- add money form -->
+    <div class="max-w-lg mx-auto p-5 form" id="add-money-form">
         <h1 class="font-bold text-[18px] mb-5 mt-4">Add Money</h1>
         <form class="bg-white p-[32px] rounded-[30px]" >
             <fieldset class="fieldset">
                 <legend class="fieldset-legend">Select A Bank</legend>
-                <select class="input w-full bg-[#f4f5f7] mt-3 text-gray-500 rounded-3xl border-1 ">
-                    <option>Select Bank</option>
-                    <option >Islami Bank</option>
-                    <option >Sonali Bank</option>
-                    <option >Rupali Bank</option>
+                <select id="bank" class="input w-full bg-[#f4f5f7] mt-3 text-gray-500 rounded-3xl border-1 ">
+                    <option value="">Select Bank</option>
+                    <option value="ibbl">Islami Bank</option>
+                    <option value="sonali">Sonali Bank</option>
+                    <option value="rupali">Rupali Bank</option>
                 </select>
         
             </fieldset>
             
             <fieldset class="fieldset">
                 <legend class="fieldset-legend">Bank Account Number</legend>
-                <input type="text" class="input w-full bg-[#f4f5f7] mt-3 rounded-3xl border-1 py-6 px-6" id="" placeholder="Enter 11 Digi Bank Account Number"  aria-colcount="" />
+                <input type="number" id="account" class="input w-full bg-[#f4f5f7] mt-3 rounded-3xl border-1 py-6 px-6" placeholder="Enter 11 Digi Bank Account Number"  aria-colcount="" />
             </fieldset>
             
             <fieldset class="fieldset">
                 <legend class="fieldset-legend">Amount to Add</legend>
-                <input type="text" class="input w-full bg-[#f4f5f7] mt-3 rounded-3xl border-1 py-6 px-6" id="" placeholder="Add Amount to Add"  aria-colcount="" />
+                <input type="number" id="amount" class="input w-full bg-[#f4f5f7] mt-3 rounded-3xl border-1 py-6 px-6" placeholder="Add Amount to Add"  aria-colcount="" />
             </fieldset>
             
             <fieldset class="fieldset">
                 <legend class="fieldset-legend">Pin Number</legend>
-                <input type="text" class="input w-full bg-[#f4f5f7] mt-3 rounded-3xl border-1 py-6 px-6" id="" placeholder="Enter 4 digit pin number"  aria-colcount="" />
+                <input type="number" class="input w-full bg-[#f4f5f7] mt-3 rounded-3xl border-1 py-6 px-6" id="pin" placeholder="Enter 4 digit pin number"  aria-colcount="" />
             </fieldset>
 
             <fieldset>
-                <button class="w-full font-bold text-[18px] mt-3 text-white btn btn-info rounded-3xl" id="loginButton">Add Money</button>
+                <button class="w-full font-bold text-[18px] mt-3 text-white btn btn-info rounded-3xl" id="add-money">Add Money</button>
+            </fieldset>
+        </form>
+    </div>
+    
+    <!-- cash out form start -->
+    <div class="max-w-lg mx-auto p-5 form" id="send-money-form">
+        <h1 class="font-bold text-[18px] mb-5 mt-4">Cash Out</h1>
+        <form class="bg-white p-[32px] rounded-[30px]" >
+            
+            <fieldset class="fieldset">
+                <legend class="fieldset-legend">Agent Number</legend>
+                <input type="number" id="agent-number" class="input w-full bg-[#f4f5f7] mt-3 rounded-3xl border-1 py-6 px-6" placeholder="Enter 11 Digit  Number"  aria-colcount="" />
+            </fieldset>
+            
+            <fieldset class="fieldset">
+                <legend class="fieldset-legend">Amount</legend>
+                <input type="number" id="withdraw-amount" class="input w-full bg-[#f4f5f7] mt-3 rounded-3xl border-1 py-6 px-6" placeholder="Enter amount to withdraw"  aria-colcount="" />
+            </fieldset>
+            
+            <fieldset class="fieldset">
+                <legend class="fieldset-legend">Pin Number</legend>
+                <input type="number" class="input w-full bg-[#f4f5f7] mt-3 rounded-3xl border-1 py-6 px-6" id="pin-number" placeholder="Enter 4 digit pin number"  aria-colcount="" />
+            </fieldset>
+
+            <fieldset>
+                <button class="w-full font-bold text-[18px] mt-3 text-white btn btn-info rounded-3xl" id="withdraw-money">Withdraw Money</button>
+            </fieldset>
+        </form>
+    </div>
+    
+    <!-- Transfer Money form start -->
+    <div class="max-w-lg mx-auto p-5 form" id="transfer-money-form" >
+        <h1 class="font-bold text-[18px] mb-5 mt-4">Transfer Money</h1>
+        <form class="bg-white p-[32px] rounded-[30px]" >
+            
+            <fieldset class="fieldset">
+                <legend class="fieldset-legend">User Account Number</legend>
+                <input type="number" id="account" class="input w-full bg-[#f4f5f7] mt-3 rounded-3xl border-1 py-6 px-6" placeholder="Enter 11 Digit  Number"  aria-colcount="" />
+            </fieldset>
+            
+            <fieldset class="fieldset">
+                <legend class="fieldset-legend">Amount</legend>
+                <input type="number" id="amount" class="input w-full bg-[#f4f5f7] mt-3 rounded-3xl border-1 py-6 px-6" placeholder="Enter amount to withdraw"  aria-colcount="" />
+            </fieldset>
+            
+            <fieldset class="fieldset">
+                <legend class="fieldset-legend">Pin Number</legend>
+                <input type="text" class="input w-full bg-[#f4f5f7] mt-3 rounded-3xl border-1 py-6 px-6" id="pin" placeholder="Enter 4 digit pin number"  aria-colcount="" />
+            </fieldset>
+
+            <fieldset>
+                <button class="w-full font-bold text-[18px] mt-3 text-white btn btn-info rounded-3xl" id="add-money-button">Send Now</button>
+            </fieldset>
+        </form>
+    </div>
+   
+    <!-- Get bonus form start -->
+    <div class="max-w-lg mx-auto p-5 form" id="get-bonus-form">
+        <h1 class="font-bold text-[18px] mb-5 mt-4">Get Bonus</h1>
+        <form class="bg-white p-[32px] rounded-[30px]" >
+            
+            <fieldset class="fieldset">
+                <legend class="fieldset-legend">Enter Bonus Coupon </legend>
+                <input type="text" id="coupon" class="input w-full bg-[#f4f5f7] mt-3 rounded-3xl border-1 py-6 px-6" placeholder="Enter your coupon"  aria-colcount="" />
+            </fieldset>
+            
+
+        
+            <fieldset>
+                <button class="w-full font-bold text-[18px] mt-3 text-white btn btn-info rounded-3xl" id="add-money-button">Get Bonus</button>
             </fieldset>
         </form>
     </div>
 
+     <!-- Pay Bill form start -->
+    <div class="max-w-lg mx-auto p-5 form" id="pay-bill-form">
+        <h1 class="font-bold text-[18px] mb-5 mt-4">Pay Bill</h1>
+        <form class="bg-white p-[32px] rounded-[30px]" >
+            
+            <fieldset class="fieldset">
+                <legend class="fieldset-legend">Select A Bank</legend>
+                <select id="bank" class="input w-full bg-[#f4f5f7] mt-3 text-gray-500 rounded-3xl border-1 ">
+                    <option value="">Select Bank</option>
+                    <option value="ibbl">Islami Bank</option>
+                    <option value="sonali">Sonali Bank</option>
+                    <option value="rupali">Rupali Bank</option>
+                </select>
+        
+            </fieldset>
 
-    <script src="./scripts.js"></script>
+            <fieldset class="fieldset">
+                <legend class="fieldset-legend">Biller Account Number</legend>
+                <input type="number" id="bill-account" class="input w-full bg-[#f4f5f7] mt-3 rounded-3xl border-1 py-6 px-6" placeholder="Enter account  Number"  aria-colcount="" />
+            </fieldset>
+            
+            <fieldset class="fieldset">
+                <legend class="fieldset-legend">Amount to Pay</legend>
+                <input type="number" id="amount" class="input w-full bg-[#f4f5f7] mt-3 rounded-3xl border-1 py-6 px-6" placeholder="Enter amount to pay"  aria-colcount="" />
+            </fieldset>
+            
+            <fieldset class="fieldset">
+                <legend class="fieldset-legend">Pin Number</legend>
+                <input type="text" class="input w-full bg-[#f4f5f7] mt-3 rounded-3xl border-1 py-6 px-6" id="pin" placeholder="Enter 4 digit pin number"  aria-colcount="" />
+            </fieldset>
+
+            <fieldset>
+                <button class="w-full font-bold text-[18px] mt-3 text-white btn btn-info rounded-3xl" id="add-money-button">Send Now</button>
+            </fieldset>
+        </form>
+    </div>
+   
+    <!-- Transaction history start -->
+    <div class="max-w-lg mx-auto p-5 form" id="transaction-history">
+        <h1 class="font-bold text-[18px] mb-5 mt-4">Transaction History</h1>
+        <div>
+            <p>transactions will shows here</p>
+        </div>
+    </div>
+   
+
+    <script src="./home.js"></script>
 </body>
 </html>
