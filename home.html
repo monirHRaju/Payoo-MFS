@@ -68,7 +68,16 @@
 
     <!-- form section -->
     <!-- initial white space -->
-    <div class="max-w-lg mx-auto p-5 form h-[500px]">
+    <div class="max-w-lg mx-auto p-5 form" id="latest-payments">
+        <div class="flex justify-between items-center">
+            <h1 class="font-bold text-[18px] mb-5 mt-4">Latest Payment</h1>
+            <a href="#"><p class="text-gray-400">View All</p></a>
+        </div>
+        <!-- Transaction Box container -->
+        <div id="latest-payment-container">
+            
+        </div>
+        
     </div>
     
      <!-- add money form -->
@@ -215,25 +224,14 @@
     </div>
    
     <!-- Transaction history start -->
-    <div class="max-w-lg mx-auto p-5 form" style="display: block;" id="transaction-history">
+    <div class="max-w-lg mx-auto p-5 form" style="display: none;" id="transaction-history">
         <div class="flex justify-between items-center">
             <h1 class="font-bold text-[18px] mb-5 mt-4">Transaction History</h1>
             <a href="#"><p class="text-gray-400">View All</p></a>
         </div>
-        <!-- Transaction Box continer -->
-        <div class="bg-white p-4 rounded-2xl flex justify-between items-center mb-4">
-            <div class="flex gap-6 items-center">
-                <div>
-                    <img src="./assets/wallet1.png" class="bg-slate-200 p-5 rounded-full" alt="">
-                </div>
-                <div>
-                    <h3 class="font-semibold text-[16px]">Electricity Bill</h3>
-                    <p class="text-[12px] text-gray-500">Today 01:44 AM</p>
-                </div>
-            </div>
-            <div>
-                <i class="fa-solid fa-ellipsis-vertical"></i>
-            </div>
+        <!-- Transaction Box container -->
+        <div id="transaction-container">
+            
         </div>
         
     </div>

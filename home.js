@@ -1,6 +1,15 @@
 // reusable functions
 const validPin = 1234;
-const transactionData = [];
+const transactionData = [
+    {
+        name : 'Cash In',
+        date : new Date().toLocaleDateString()
+    },
+    {
+        name : 'Cash Out',
+        date : new Date().toLocaleDateString()
+    }
+];
 
 
 function getValue(id){
@@ -58,7 +67,7 @@ function toggleButton(id){
     element.classList.add('active-btn');
 }
 
-//private functions
+//private functions form submission
 document.getElementById('add-money').addEventListener('click', function(e){
     e.preventDefault()
 
@@ -66,7 +75,7 @@ document.getElementById('add-money').addEventListener('click', function(e){
     const accountNumber = getValue('add-account')
     const amount = getValueNumber('add-amount');
     const pin = getValueNumber('add-pin')
-    console.log(bank, accountNumber, amount, pin)
+    // console.log(bank, accountNumber, amount, pin)
 
     const availableBalance = getInnerTextNumber('balance')
     if(accountNumber.length < 11){
@@ -86,9 +95,12 @@ document.getElementById('add-money').addEventListener('click', function(e){
 
     setAvailableBalance(newAvailableBalance)
 
-
-    
-    console.log(bank, accountNumber, amount, pin, newAvailableBalance)
+    const data = {
+        name : 'Add Money',
+        date : new Date().toLocaleDateString()
+    }
+    transactionData.push(data);
+    // console.log(transactionData)
 })
 
 document.getElementById('withdraw-money').addEventListener('click', function(e){
@@ -98,7 +110,13 @@ document.getElementById('withdraw-money').addEventListener('click', function(e){
     const amount = getValueNumber('cashout-amount');
     const pin = getValueNumber('cashout-pin');
     const availableBalance = getInnerTextNumber('balance');
-    
+
+   if(amount <= 0 || amount > availableBalance ){
+        alert('Invalid amount')
+        return
+    }
+
+
     if(accountNumber.length < 11){
         alert('invalid account number')
         return
@@ -107,9 +125,7 @@ document.getElementById('withdraw-money').addEventListener('click', function(e){
         alert('invalid pin')
         return
     }
-    if(amount <= 0 ){
-        alert('amount must be greater than 0')
-    }
+    
 
     const newAvailableBalance = availableBalance - amount;
 
@@ -117,12 +133,71 @@ document.getElementById('withdraw-money').addEventListener('click', function(e){
     setAvailableBalance(newAvailableBalance)
 
 
-    console.log(accountNumber, amount, pin);
+   const data = {
+        name : 'Cash Out',
+        date : new Date().toLocaleDateString()
+    }
+    transactionData.push(data);
+    // console.log(transactionData)
 
 
 })
 
+//homepage auto load latest payments
+const latestPaymentContainer = getElement('latest-payment-container');
+    latestPaymentContainer.innerText = '';
+    transactionData.reverse();
+    for(const data of transactionData){
+        const div = document.createElement('div');
+        div.innerHTML = `
+                <div class="bg-white p-4 rounded-2xl flex justify-between items-center mb-4">
+                    <div class="flex gap-6 items-center">
+                        <div>
+                            <img src="./assets/wallet1.png" class="bg-slate-200 p-5 rounded-full" alt="">
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-[16px]">${data.name}</h3>
+                            <p class="text-[12px] text-gray-500">${data.date}</p>
+                        </div>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                </div>
+        `
 
+        latestPaymentContainer.appendChild(div);
+    }
+
+// append all transactionData to transaction section first the toggle. toggle feature is added to the bottom
+document.getElementById('transaction-btn').addEventListener('click', function(){
+
+    const transactionContainer = getElement('transaction-container');
+    transactionContainer.innerText = '';
+
+    for(const data of transactionData){
+        const div = document.createElement('div');
+        div.innerHTML = `
+                <div class="bg-white p-4 rounded-2xl flex justify-between items-center mb-4">
+                    <div class="flex gap-6 items-center">
+                        <div>
+                            <img src="./assets/wallet1.png" class="bg-slate-200 p-5 rounded-full" alt="">
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-[16px]">${data.name}</h3>
+                            <p class="text-[12px] text-gray-500">${data.date}</p>
+                        </div>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                </div>
+        `
+
+        transactionContainer.appendChild(div);
+    }
+
+})
 
 
 //form display functions
@@ -169,6 +244,9 @@ document.getElementById('transaction-btn').addEventListener('click', function(){
 
     //toggle button activation
    toggleButton('transaction-btn')
+
+   
+
 })
 
 
