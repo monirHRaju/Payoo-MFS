@@ -1,6 +1,6 @@
 // reusable functions
 const validPin = 1234;
-const availableBalance = getInnerTextNumber('balance')
+const transactionData = [];
 
 
 function getValue(id){
@@ -37,18 +37,38 @@ function getElements(className){
     return elements;
 }
 
+function toggleForm(id){
+    const forms = document.getElementsByClassName('form')
 
+    for(const form of forms){
+        form.style.display = 'none';
+    }
+
+    document.getElementById(id).style.display = 'block';
+}
+
+function toggleButton(id){
+    //deactivate button style with class
+    const buttons = getElements('button')
+    for(const btn of buttons){
+    btn.classList.remove('active-btn');
+     }
+    //activate button style with class
+    const element = getElement(id)
+    element.classList.add('active-btn');
+}
 
 //private functions
 document.getElementById('add-money').addEventListener('click', function(e){
     e.preventDefault()
 
-    const bank = getValue('bank')
-    const accountNumber = getValue('account')
-    const amount = getValueNumber('amount');
-    const pin = getValueNumber('pin')
-    // const availableBalance = getInnerTextNumber('balance')
-    
+    const bank = getValue('add-bank')
+    const accountNumber = getValue('add-account')
+    const amount = getValueNumber('add-amount');
+    const pin = getValueNumber('add-pin')
+    console.log(bank, accountNumber, amount, pin)
+
+    const availableBalance = getInnerTextNumber('balance')
     if(accountNumber.length < 11){
         alert('invalid account number')
         return
@@ -56,6 +76,9 @@ document.getElementById('add-money').addEventListener('click', function(e){
     if(pin !== validPin){
         alert('invalid pin')
         return
+    }
+    if(amount <= 0 ){
+        alert('amount must be greater than 0')
     }
 
     const newAvailableBalance = availableBalance + amount;
@@ -71,26 +94,30 @@ document.getElementById('add-money').addEventListener('click', function(e){
 document.getElementById('withdraw-money').addEventListener('click', function(e){
     e.preventDefault()
     
-    const agentAccount = getValue('agent-number')
-    const withdrawAmount = getValueNumber('withdraw-amount');
-    const pinNumber = getValueNumber('pin-number');
+    const accountNumber = getValue('agent-number')
+    const amount = getValueNumber('cashout-amount');
+    const pin = getValueNumber('cashout-pin');
+    const availableBalance = getInnerTextNumber('balance');
     
-    if(agentAccount.length < 11){
+    if(accountNumber.length < 11){
         alert('invalid account number')
         return
     }
-    if(pinNumber !== validPin){
+    if(pin !== validPin){
         alert('invalid pin')
         return
     }
+    if(amount <= 0 ){
+        alert('amount must be greater than 0')
+    }
 
-    const newAvailableBalance = availableBalance - withdrawAmount;
+    const newAvailableBalance = availableBalance - amount;
 
 
     setAvailableBalance(newAvailableBalance)
 
 
-    console.log(agentAccount, withdrawAmount, pinNumber);
+    console.log(accountNumber, amount, pin);
 
 
 })
@@ -100,124 +127,48 @@ document.getElementById('withdraw-money').addEventListener('click', function(e){
 
 //form display functions
 document.getElementById('add-money-btn').addEventListener('click', function(){
-    const forms = document.getElementsByClassName('form')
-
-    for(const form of forms){
-        form.style.display = 'none';
-    }
-
-    document.getElementById('add-money-form').style.display = 'block';
+//    form show/hide
+    toggleForm('add-money-form')
     
     //toggle button activation
-    //deactivate button style with class
-    const buttons = getElements('button')
-    for(const btn of buttons){
-    btn.classList.remove('active-btn');
-     }
-    //activate button style with class
-    const element = getElement('add-money-btn')
-    element.classList.add('active-btn');
+    toggleButton('add-money-btn')
 })
 
 document.getElementById('send-money-btn').addEventListener('click', function(){
-    const forms = document.getElementsByClassName('form')
-
-    for(const form of forms){
-        form.style.display = 'none';
-    }
-
-   getElement('send-money-form').style.display = 'block';
+    toggleForm('send-money-form')
     
     //toggle button activation
-    //deactivate button style with class
-    const buttons = getElements('button')
-    for(const btn of buttons){
-    btn.classList.remove('active-btn');
-     }
-    //activate button style with class
-    const element = getElement('send-money-btn')
-    element.classList.add('active-btn');
+    toggleButton('send-money-btn')
 })
 
 document.getElementById('transfer-money-btn').addEventListener('click', function(){
-    const forms = document.getElementsByClassName('form')
-
-    for(const form of forms){
-        form.style.display = 'none';
-    }
-
-    document.getElementById('transfer-money-form').style.display = 'block';
+    toggleForm('transfer-money-form');
 
     //toggle button activation
-    //deactivate button style with class
-    const buttons = getElements('button')
-    for(const btn of buttons){
-    btn.classList.remove('active-btn');
-     }
-    //activate button style with class
-    const element = getElement('transfer-money-btn')
-    element.classList.add('active-btn');
+    toggleButton('transfer-money-btn')
     
 })
 
 document.getElementById('get-bonus-btn').addEventListener('click', function(){
-    const forms = document.getElementsByClassName('form')
-
-    for(const form of forms){
-        form.style.display = 'none';
-    }
-
-    document.getElementById('get-bonus-form').style.display = 'block';
+    toggleForm('get-bonus-form');
     
     //toggle button activation
-    //deactivate button style with class
-    const buttons = getElements('button')
-    for(const btn of buttons){
-    btn.classList.remove('active-btn');
-     }
-    //activate button style with class
-    const element = getElement('get-bonus-btn')
-    element.classList.add('active-btn');
+    toggleButton('get-bonus-btn')
 })
 
 document.getElementById('pay-bill-btn').addEventListener('click', function(){
-    const forms = document.getElementsByClassName('form')
-
-    for(const form of forms){
-        form.style.display = 'none';
-    }
-
-    getElement('pay-bill-form').style.display = 'block';
+    toggleForm('pay-bill-form');
 
     //toggle button activation
-    //deactivate button style with class
-    const buttons = getElements('button')
-    for(const btn of buttons){
-    btn.classList.remove('active-btn');
-     }
-    //activate button style with class
-    const element = getElement('pay-bill-btn')
-    element.classList.add('active-btn');
+    toggleButton('pay-bill-btn')
     
 })
 
 document.getElementById('transaction-btn').addEventListener('click', function(){
-    const forms = getElements('form')
+    toggleForm('transaction-history')
 
-    for(const form of forms){
-        form.style.display = 'none';
-    }
-
-    document.getElementById('transaction-history').style.display = 'block';
     //toggle button activation
-    //deactivate button style with class
-    const buttons = getElements('button')
-    for(const btn of buttons){
-    btn.classList.remove('active-btn');
-     }
-    //activate button style with class
-    const element = getElement('transaction-btn')
-    element.classList.add('active-btn');
+   toggleButton('transaction-btn')
 })
 
 

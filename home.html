@@ -67,14 +67,17 @@
     </div>
 
     <!-- form section -->
-
+    <!-- initial white space -->
+    <div class="max-w-lg mx-auto p-5 form h-[500px]">
+    </div>
+    
      <!-- add money form -->
-    <div class="max-w-lg mx-auto p-5 form" id="add-money-form">
+    <div class="max-w-lg mx-auto p-5 form" style="display: none;" id="add-money-form">
         <h1 class="font-bold text-[18px] mb-5 mt-4">Add Money</h1>
         <form class="bg-white p-[32px] rounded-[30px]" >
             <fieldset class="fieldset">
                 <legend class="fieldset-legend">Select A Bank</legend>
-                <select id="bank" class="input w-full bg-[#f4f5f7] mt-3 text-gray-500 rounded-3xl border-1 ">
+                <select id="add-bank" class="input w-full bg-[#f4f5f7] mt-3 text-gray-500 rounded-3xl border-1 ">
                     <option value="">Select Bank</option>
                     <option value="ibbl">Islami Bank</option>
                     <option value="sonali">Sonali Bank</option>
@@ -85,17 +88,17 @@
             
             <fieldset class="fieldset">
                 <legend class="fieldset-legend">Bank Account Number</legend>
-                <input type="number" id="account" class="input w-full bg-[#f4f5f7] mt-3 rounded-3xl border-1 py-6 px-6" placeholder="Enter 11 Digi Bank Account Number"  aria-colcount="" />
+                <input type="number" id="add-account" class="input w-full bg-[#f4f5f7] mt-3 rounded-3xl border-1 py-6 px-6" placeholder="Enter 11 Digi Bank Account Number"  aria-colcount="" />
             </fieldset>
             
             <fieldset class="fieldset">
                 <legend class="fieldset-legend">Amount to Add</legend>
-                <input type="number" id="amount" class="input w-full bg-[#f4f5f7] mt-3 rounded-3xl border-1 py-6 px-6" placeholder="Add Amount to Add"  aria-colcount="" />
+                <input type="number" id="add-amount" class="input w-full bg-[#f4f5f7] mt-3 rounded-3xl border-1 py-6 px-6" placeholder="Add Amount to Add"  aria-colcount="" />
             </fieldset>
             
             <fieldset class="fieldset">
                 <legend class="fieldset-legend">Pin Number</legend>
-                <input type="number" class="input w-full bg-[#f4f5f7] mt-3 rounded-3xl border-1 py-6 px-6" id="pin" placeholder="Enter 4 digit pin number"  aria-colcount="" />
+                <input type="number" class="input w-full bg-[#f4f5f7] mt-3 rounded-3xl border-1 py-6 px-6" id="add-pin" placeholder="Enter 4 digit pin number"  aria-colcount="" />
             </fieldset>
 
             <fieldset>
@@ -105,7 +108,7 @@
     </div>
     
     <!-- cash out form start -->
-    <div class="max-w-lg mx-auto p-5 form" id="send-money-form">
+    <div class="max-w-lg mx-auto p-5 form" style="display: none;" id="send-money-form">
         <h1 class="font-bold text-[18px] mb-5 mt-4">Cash Out</h1>
         <form class="bg-white p-[32px] rounded-[30px]" >
             
@@ -116,12 +119,12 @@
             
             <fieldset class="fieldset">
                 <legend class="fieldset-legend">Amount</legend>
-                <input type="number" id="withdraw-amount" class="input w-full bg-[#f4f5f7] mt-3 rounded-3xl border-1 py-6 px-6" placeholder="Enter amount to withdraw"  aria-colcount="" />
+                <input type="number" id="cashout-amount" class="input w-full bg-[#f4f5f7] mt-3 rounded-3xl border-1 py-6 px-6" placeholder="Enter amount to withdraw"  aria-colcount="" />
             </fieldset>
             
             <fieldset class="fieldset">
                 <legend class="fieldset-legend">Pin Number</legend>
-                <input type="number" class="input w-full bg-[#f4f5f7] mt-3 rounded-3xl border-1 py-6 px-6" id="pin-number" placeholder="Enter 4 digit pin number"  aria-colcount="" />
+                <input type="number" class="input w-full bg-[#f4f5f7] mt-3 rounded-3xl border-1 py-6 px-6" id="cashout-pin" placeholder="Enter 4 digit pin number"  aria-colcount="" />
             </fieldset>
 
             <fieldset>
@@ -131,7 +134,7 @@
     </div>
     
     <!-- Transfer Money form start -->
-    <div class="max-w-lg mx-auto p-5 form" id="transfer-money-form" >
+    <div class="max-w-lg mx-auto p-5 form" style="display: none;" id="transfer-money-form" >
         <h1 class="font-bold text-[18px] mb-5 mt-4">Transfer Money</h1>
         <form class="bg-white p-[32px] rounded-[30px]" >
             
@@ -157,7 +160,7 @@
     </div>
    
     <!-- Get bonus form start -->
-    <div class="max-w-lg mx-auto p-5 form" id="get-bonus-form">
+    <div class="max-w-lg mx-auto p-5 form" style="display: none;" id="get-bonus-form">
         <h1 class="font-bold text-[18px] mb-5 mt-4">Get Bonus</h1>
         <form class="bg-white p-[32px] rounded-[30px]" >
             
@@ -175,7 +178,7 @@
     </div>
 
      <!-- Pay Bill form start -->
-    <div class="max-w-lg mx-auto p-5 form" id="pay-bill-form">
+    <div class="max-w-lg mx-auto p-5 form" style="display: none;" id="pay-bill-form">
         <h1 class="font-bold text-[18px] mb-5 mt-4">Pay Bill</h1>
         <form class="bg-white p-[32px] rounded-[30px]" >
             
@@ -212,11 +215,27 @@
     </div>
    
     <!-- Transaction history start -->
-    <div class="max-w-lg mx-auto p-5 form" id="transaction-history">
-        <h1 class="font-bold text-[18px] mb-5 mt-4">Transaction History</h1>
-        <div>
-            <p>transactions will shows here</p>
+    <div class="max-w-lg mx-auto p-5 form" style="display: block;" id="transaction-history">
+        <div class="flex justify-between items-center">
+            <h1 class="font-bold text-[18px] mb-5 mt-4">Transaction History</h1>
+            <a href="#"><p class="text-gray-400">View All</p></a>
         </div>
+        <!-- Transaction Box continer -->
+        <div class="bg-white p-4 rounded-2xl flex justify-between items-center mb-4">
+            <div class="flex gap-6 items-center">
+                <div>
+                    <img src="./assets/wallet1.png" class="bg-slate-200 p-5 rounded-full" alt="">
+                </div>
+                <div>
+                    <h3 class="font-semibold text-[16px]">Electricity Bill</h3>
+                    <p class="text-[12px] text-gray-500">Today 01:44 AM</p>
+                </div>
+            </div>
+            <div>
+                <i class="fa-solid fa-ellipsis-vertical"></i>
+            </div>
+        </div>
+        
     </div>
    
 
